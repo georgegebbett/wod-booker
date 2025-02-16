@@ -11,7 +11,7 @@ async function main() {
     // Get classes for 8-14 days ahead
     const dates: Date[] = [];
     const startDate = new Date();
-    startDate.setDate(startDate.getDate() + 0);  // Start 8 days ahead
+    startDate.setDate(startDate.getDate() + 8);  // Start 8 days ahead
     
     for (let i = 0; i < 7; i++) {  // Get 7 days worth
         const date = new Date(startDate);
