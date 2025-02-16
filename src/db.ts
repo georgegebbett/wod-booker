@@ -14,10 +14,12 @@ export interface ClassConfirmation {
 
 let db: any = null;
 
+const dbPath = process.env.DB_PATH || 'bookings.db';
+
 export async function initDb() {
     if (!db) {
         db = await open({
-            filename: 'bookings.db',
+            filename: dbPath,
             driver: sqlite3.Database
         });
 
