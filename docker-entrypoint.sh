@@ -23,5 +23,8 @@ chmod 0644 /etc/cron.d/gym-cron
 # Load crontab and restart cron
 crontab /etc/cron.d/gym-cron
 
+# Ensure env vars available to cron jobs
+printenv | sed 's/^/export /' > /etc/environment
+
 # Ensure cron is running
 exec cron -f
