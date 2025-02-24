@@ -145,6 +145,10 @@ export class GymApiClient {
         const params = new URLSearchParams();
         params.append('_method', 'post');
         params.append('authenticity_token', this.csrfToken!);
+        if (this.config.membershipId) {
+            params.append('reserve_with', this.config.membershipId);
+            params.append('payment_type', 'stripe_card');
+        }
 
         const response = await this.fetch(
             `https://www.wodboard.com/events/${eventId}/bookings`,

@@ -13,6 +13,7 @@ export interface ApiConfig {
     username: string;
     password: string;
     apiBaseUrl: string;
+    membershipId?: string;
 }
 
 export async function loadConfig(configPath: string): Promise<Config> {
