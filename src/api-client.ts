@@ -1,15 +1,15 @@
 import { CookieJar } from 'tough-cookie';
-import type { ApiConfig } from './config';   
-import type { AuthResponse, WodBoardEvent } from './types';
+import type { AuthResponse, WodBoardEvent, UserConfig } from './types';
 
 export class GymApiClient {
-    private config: ApiConfig;
+    private config: Pick<UserConfig, 'clientId' | 'username' | 'password' | 'membershipId'>;
     private accessToken: string | null = null;
     private tokenExpiry: Date | null = null;
     private csrfToken: string | null = null;
     private cookieJar: CookieJar;
+    private readonly apiBaseUrl = 'https://www.wodboard.com';
 
-    constructor(config: ApiConfig) {
+    constructor(config: Pick<UserConfig, 'clientId' | 'username' | 'password' | 'membershipId'>) {
         this.config = config;
         this.cookieJar = new CookieJar();
     }
@@ -48,7 +48,7 @@ export class GymApiClient {
         params.append('username', this.config.username);
         params.append('password', this.config.password);
 
-        const response = await this.fetch('https://www.wodboard.com/oauth/token', {
+        const response = await this.fetch(`${this.apiBaseUrl}/oauth/token`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json, text/plain, */*',
@@ -71,7 +71,7 @@ export class GymApiClient {
 
     private async setCookie(): Promise<void> {
         const response = await this.fetch(
-            'https://www.wodboard.com/api/v1/mobile/auth/set_cookie?version=1.9.0.33',
+            `${this.apiBaseUrl}/api/v1/mobile/auth/set_cookie?version=1.9.0.33`,
             {
                 headers: {
                     'Authorization': `Bearer ${this.accessToken}`,
@@ -86,7 +86,7 @@ export class GymApiClient {
     }
 
     private async getCSRFToken(): Promise<void> {
-        const response = await this.fetch('https://www.wodboard.com/dashboard', {
+        const response = await this.fetch(`${this.apiBaseUrl}/dashboard`, {
             headers: {
                 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
                 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15'
@@ -122,7 +122,7 @@ export class GymApiClient {
         await this.ensureAuthenticated();
         
         const response = await this.fetch(
-            `https://www.wodboard.com/calendars/72/events.json?start=${startDate.toISOString().split('T')[0]}&end=${endDate.toISOString().split('T')[0]}&_=${Date.now()}`,
+            `${this.apiBaseUrl}/calendars/72/events.json?start=${startDate.toISOString().split('T')[0]}&end=${endDate.toISOString().split('T')[0]}&_=${Date.now()}`,
             {
                 headers: {
                     'X-CSRF-Token': this.csrfToken!
@@ -152,13 +152,13 @@ export class GymApiClient {
         }
 
         const response = await this.fetch(
-            `https://www.wodboard.com/events/${eventId}/bookings`,
+            `${this.apiBaseUrl}/events/${eventId}/bookings`,
             {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
-                    'Origin': 'https://www.wodboard.com',
-                    'Referer': 'https://www.wodboard.com/calendars/72'
+                    'Origin': this.apiBaseUrl,
+                    'Referer': `${this.apiBaseUrl}/calendars/72`
                 },
                 body: params.toString(),
                 redirect: 'manual',

@@ -86,8 +86,7 @@ async function main() {
                     clientId: user.clientId!,
                     username: user.username,
                     password: user.password,
-                    apiBaseUrl: 'https://www.wodboard.com',
-                    membershipId: user.membership_id
+                    membershipId: user.membershipId
                 });
                 
                 const scheduler = new ClassScheduler(user.classes);
