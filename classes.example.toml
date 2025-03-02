@@ -1,0 +1,37 @@
+discord_channel_id = "YOUR_DISCORD_CHANNEL_ID" 
+discord_bot_token = "YOUR_DISCORD_BOT_TOKEN"
+
+[[users]]
+name = "YOUR_NAME"
+username = "YOUR_WODBOARD_EMAIL"
+password = "YOUR_WODBOARD_PASSWORD"
+discord_id = "YOUR_DISCORD_USER_ID"
+
+[[users.classes]]
+name = "WOD Class"
+time = "07:00"
+days = ["Monday", "Friday"]
+
+[[users.classes]]
+name = "WOD Class"
+time = "06:00"
+days = ["Wednesday"]
+
+# Add as many users as you want
+
+[[users]]
+name = "SECOND_USER_NAME"
+username = "SECOND_USER_WODBOARD_EMAIL"
+password = "SECOND_USER_WODBOARD_PASSWORD"
+discord_id = "SECOND_USER_DISCORD_USER_ID"
+membership_id = "SECOND_USER_WODBOARD_MEMBERSHIP_ID"
+
+[[users.classes]]
+name = "WOD Class"
+time = "07:00"
+days = ["Monday", "Friday"]
+
+[[users.classes]]
+name = "WOD Class"
+time = "06:00"
+days = ["Wednesday"]
