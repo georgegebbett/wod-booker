@@ -13,21 +13,23 @@
     "test:auth": "tsx scripts/test-auth.ts",
     "test:classes": "tsx scripts/test-classes.ts",
     "test:notifications": "tsx scripts/test-notifications.ts",
-    "test:confirmation-flow": "tsx scripts/test-confirmation-flow.ts"
+    "test:confirmation-flow": "tsx scripts/test-confirmation-flow.ts",
+    "test:config": "tsx scripts/test-config.ts",
+    "test:book": "tsx scripts/test-book.ts"
   },
   "dependencies": {
     "smol-toml": "^1.1.4",
-    "tough-cookie": "^4.1.3",
+    "sqlite": "^5.1.1",
     "sqlite3": "^5.1.7",
-    "sqlite": "^5.1.1"
+    "tough-cookie": "^4.1.3"
   },
   "devDependencies": {
     "@types/node": "^20.11.19",
-    "@types/tough-cookie": "^4.0.5",
     "@types/sqlite3": "^3.1.11",
+    "@types/tough-cookie": "^4.0.5",
+    "esbuild": "^0.20.1",
     "tsx": "^4.7.1",
-    "typescript": "^5.3.3",
-    "esbuild": "^0.20.1"
+    "typescript": "^5.3.3"
   },
   "packageManager": "pnpm@9.1.4+sha1.2432063d815cfa88fd9fef1d85a445e3f609851d"
 }

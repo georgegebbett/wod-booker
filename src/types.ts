@@ -63,6 +63,7 @@ export interface UserConfig {
     clientId: string;
     discord_id: string;
     classes: ClassConfig[];
+    membership_id: string;
 }
 
 export interface Config {

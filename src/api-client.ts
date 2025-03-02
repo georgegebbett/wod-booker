@@ -146,6 +146,7 @@ export class GymApiClient {
         params.append('_method', 'post');
         params.append('authenticity_token', this.csrfToken!);
         if (this.config.membershipId) {
+            console.log(`Using membership ID ${this.config.membershipId}`);
             params.append('reserve_with', this.config.membershipId);
             params.append('payment_type', 'stripe_card');
         }

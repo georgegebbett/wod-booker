@@ -26,6 +26,7 @@ export async function loadConfig(configPath: string): Promise<Config> {
         discord_bot_token: userConfig.discord_bot_token,
         users: userConfig.users.map(user => ({
             ...user,
+            membershipId: user.membership_id,
             clientId: WODBOARD_CLIENT_ID
         }))
     };
