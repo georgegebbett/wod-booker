@@ -107,7 +107,7 @@ async function main() {
                     );
                     
                     // If confirmed and bookable and not already booked, book it
-                    if (wasConfirmed && cls.is_bookable && !cls.attending && !cls.waitlisted) {
+                    if (wasConfirmed && (cls.is_bookable || cls.is_waitlistable) && !cls.attending && !cls.waitlisted) {
                         await client.bookClass(cls.id);
                         const confirmation = await getConfirmationDetails(
                             user.name,

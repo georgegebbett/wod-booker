@@ -39,7 +39,7 @@ async function main() {
                 const date = new Date(c.start);
                 console.log(`
 🏋️ ${c.title} (${c.space})
-   📅 ${date.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })} at ${date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}
+   📅 ${date.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })} at ${date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })} UTC (${date.toLocaleString('en-US', { hour: '2-digit', minute: '2-digit', timeZone: user.timezone })} local time)
    👥 ${c.booking_count}/${c.size_limit} (${c.waitlist_count} waitlisted)
    ${c.is_bookable ? '✅ Open for booking' : c.booking_open ? '⏳ Not yet bookable' : '❌ Booking closed'}
    ${c.attending ? '🎯 You are attending' : c.waitlisted ? '⌛ You are waitlisted' : ''}

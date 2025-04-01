@@ -12,23 +12,27 @@ export class ClassScheduler {
     isTargetClass(event: WodBoardEvent, date: Date): boolean {
         const eventDate = new Date(event.start);
         const dayName = eventDate.toLocaleDateString('en-US', { weekday: 'long' });
+
         
         return this.config.some(classConfig => {
             // Convert event time to the user's timezone
-            const eventInTargetTz = new Date(eventDate.toLocaleString('en-US', {
-                timeZone: this.timezone
-            }));
             
-            const eventTime = eventInTargetTz.toLocaleTimeString('en-US', { 
+            
+
+            const eventTime = eventDate.toLocaleTimeString('en-US', { 
                 hour: '2-digit', 
                 minute: '2-digit',
                 hour12: false,
                 timeZone: this.timezone
             });
 
+            
+
             return event.title === classConfig.name &&
                    eventTime === classConfig.time &&
                    classConfig.days.includes(dayName);
+            
+           
         });
     }
 } 

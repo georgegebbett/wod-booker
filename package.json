@@ -11,7 +11,7 @@
     "dev": "tsx src/index.ts",
     "dev:request-confirmations": "tsx scripts/request-confirmations.ts",
     "test:auth": "tsx scripts/test-auth.ts",
-    "test:classes": "tsx scripts/test-classes.ts",
+    "test:classes": "TZ=UTC tsx scripts/test-classes.ts",
     "test:notifications": "tsx scripts/test-notifications.ts",
     "test:confirmation-flow": "tsx scripts/test-confirmation-flow.ts",
     "test:config": "tsx scripts/test-config.ts",
