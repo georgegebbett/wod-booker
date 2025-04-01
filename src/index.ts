@@ -89,7 +89,7 @@ async function main() {
                     membershipId: user.membershipId
                 });
                 
-                const scheduler = new ClassScheduler(user.classes);
+                const scheduler = new ClassScheduler(user);
                 const classes = await client.getClasses(now, endDate);
                 
                 // Filter for classes we might want to book

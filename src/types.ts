@@ -45,11 +45,11 @@ export interface CookieResponse {
     message?: string;
 }
 
-export interface ClassConfig {
+export type ClassConfig = {
     name: string;
     time: string;
     days: string[];
-}
+};
 
 export interface CSRFResponse {
     csrf_token: string;
@@ -62,6 +62,7 @@ export interface UserConfig {
     password: string;
     clientId: string;
     discord_id: string;
+    timezone: string;
     classes: ClassConfig[];
     membershipId?: string;
 }

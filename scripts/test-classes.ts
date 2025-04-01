@@ -12,10 +12,9 @@ async function main() {
             clientId: user.clientId,
             username: user.username,
             password: user.password,
-            apiBaseUrl: 'https://www.wodboard.com'
         });
         
-        const scheduler = new ClassScheduler(user.classes);
+        const scheduler = new ClassScheduler(user);
         
         console.log(`\nChecking classes for ${user.name}...`);
         

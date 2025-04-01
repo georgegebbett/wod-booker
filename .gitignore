@@ -2,3 +2,4 @@ node_modules
 classes.toml
 dist
 bookings.db
+.DS_Store
