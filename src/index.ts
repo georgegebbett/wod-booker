@@ -103,7 +103,7 @@ async function main() {
                     const wasConfirmed = await getConfirmation(
                         user.name,
                         date.toISOString().split('T')[0],
-                        date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false })
+                        date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: user.timezone })
                     );
                     
                     // If confirmed and bookable and not already booked, book it
@@ -112,7 +112,7 @@ async function main() {
                         const confirmation = await getConfirmationDetails(
                             user.name,
                             date.toISOString().split('T')[0],
-                            date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false })
+                            date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: user.timezone })
                         );
                         
                         if (confirmation) {
@@ -153,7 +153,7 @@ async function main() {
                             const confirmation = await getConfirmationDetails(
                                 user.name,
                                 date.toISOString().split('T')[0],
-                                date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false })
+                                date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: user.timezone })
                             );
                             
                             if (confirmation && !confirmation.booked) {
