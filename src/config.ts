@@ -23,7 +23,8 @@ const configFileSchema = z.object({
             name: z.string(),
             time: z.string(),
             days: z.array(dayOfWeekSchema)
-        }))
+        })),
+        timezone: z.string()
     }))
 });
 
