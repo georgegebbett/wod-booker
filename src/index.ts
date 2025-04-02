@@ -126,13 +126,13 @@ async function main() {
                             if (confirmation.thread_id) {
                                 await sendMessage(
                                     confirmation.thread_id,
-                                    `✅ Booked ${cls.title} for ${date.toLocaleString('en-GB', {hour: '2-digit', minute: '2-digit', weekday: 'long', month: 'numeric', day: 'numeric'})}`,
+                                    `✅ Booked ${cls.title} for ${date.toLocaleString('en-GB', {hour: '2-digit', minute: '2-digit', weekday: 'long', month: 'numeric', day: 'numeric', timeZone: user.timezone})}`,
                                     config.discord_bot_token,
                                 );
                             } else {
                                 await sendMessage(
                                     config.discord_channel_id,
-                                    `✅ Booked ${cls.title} for ${user.name} on ${date.toLocaleString('en-GB', {hour: '2-digit', minute: '2-digit', weekday: 'long', month: 'numeric', day: 'numeric'})}`,
+                                    `✅ Booked ${cls.title} for ${user.name} on ${date.toLocaleString('en-GB', {hour: '2-digit', minute: '2-digit', weekday: 'long', month: 'numeric', day: 'numeric', timeZone: user.timezone})}`,
                                     config.discord_bot_token,
                                 );
                             }
